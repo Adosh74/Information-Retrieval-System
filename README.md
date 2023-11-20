@@ -12,10 +12,10 @@ This is a simple information retrieval system that can be used to search for doc
 
 1. Tokenization should be done using the following rules:
 
-    - Splitting on whitespace. [wip]
-    - Removing punctuation. [wip]
-    - Removing stop words. [wip]
-    - Stemming using the Porter Stemmer algorithm. [wip]
+    - Splitting on whitespace. [✅]
+    - Removing punctuation. [✅]
+    - Removing stop words. [✅]
+    - Stemming using the Porter Stemmer algorithm. [✅]
 
 2. **Constructing Auxiliary structure(s) (Positional index)** to speed up the search process should be done. [wip]
 
