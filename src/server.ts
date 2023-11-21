@@ -3,12 +3,14 @@ import { app } from './app';
 import Stemming from './utils/stemming';
 import Tokenization from './utils/tokenization';
 
+// read collection
 const collection = fs
 	.readdirSync('./collection')
 	.sort((a, b) => parseInt(a) - parseInt(b));
 
 console.log(collection);
 
+// test a query with tokenization and stemming
 Tokenization('fools fear in rush to tread where').forEach((token) => {
 	console.log(Stemming(token));
 });
