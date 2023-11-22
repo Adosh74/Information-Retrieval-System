@@ -5,6 +5,7 @@ import { PositionalIndex } from './utils/positionalIndex';
 import Stemming from './utils/stemming';
 import Tokenization from './utils/tokenization';
 
+app.use(express.json());
 // read collection
 const collection = fs
 	.readdirSync('./collection')
