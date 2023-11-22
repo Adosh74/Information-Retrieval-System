@@ -1,5 +1,7 @@
+import { Request, Response } from 'express';
 import fs from 'fs';
 import { app } from './app';
+import { PositionalIndex } from './utils/positionalIndex';
 import Stemming from './utils/stemming';
 import Tokenization from './utils/tokenization';
 
