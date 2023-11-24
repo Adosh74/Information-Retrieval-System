@@ -33,13 +33,16 @@ export class PositionalIndex {
 		return this.index[term];
 	}
 
-	buildIndexFromDirectory(directoryPath: string): void {
-		const fileNames = fs.readdirSync(directoryPath);
+	buildIndexFromDirectory(): void {
+		const fileNames = fs
+			.readdirSync('./collection')
+			.sort((a, b) => parseInt(a) - parseInt(b));
 
 		fileNames.forEach((fileName, docId) => {
-			const filePath = path.join(directoryPath, fileName);
+			const filePath = path.join(`${process.cwd()}/collection`, fileName);
 			const fileContent = fs.readFileSync(filePath, 'utf-8');
 			const terms = fileContent.split(' ');
+			console.log(terms);
 
 			terms.forEach((term, position) => {
 				this.addTerm(term, docId, position);
