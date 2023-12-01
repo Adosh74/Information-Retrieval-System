@@ -17,9 +17,9 @@ This is a simple information retrieval system that can be used to search for doc
     - Removing stop words. [✅]
     - Stemming using the Porter Stemmer algorithm. [✅]
 
-2. **Constructing Auxiliary structure(s) (Positional index)** to speed up the search process should be done. [wip]
+2. **Constructing Auxiliary structure(s) (Positional index)** to speed up the search process should be done. [✅]
 
-3. **Phrase query** search should be supported using the positional index. [wip]
+3. **Phrase query** search should be supported using the positional index. [✅]
 
 4. **Term frequency** and inverse document frequency should be used to rank the documents in the corpus. [wip]
 
