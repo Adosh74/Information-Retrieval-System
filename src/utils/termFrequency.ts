@@ -22,6 +22,7 @@ const TermFrequency = (props: string[][]) => {
 				const term = {
 					term: props[i][j],
 					[`d${i + 1}`]: 1,
+					// eslint-disable-next-line prettier/prettier
 				} as ITermFrequency;
 				termFrequency.push(term);
 			}
