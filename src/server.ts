@@ -3,10 +3,12 @@ import { app } from './app';
 import createPositionalIndex from './utils/newPositionalIndex';
 import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
+import TermFrequency from './utils/termRrequency';
 import Tokenization from './utils/tokenization';
 
 // eslint-disable-next-line prefer-const
-let fileTerms: string[][] = [[]];
+const words: string[][] = [[]];
+const fileTerms: string[][] = [[]];
 // read collection
 fs.readdirSync('./collection')
 	.sort((a, b) => parseInt(a) - parseInt(b))
@@ -15,6 +17,7 @@ fs.readdirSync('./collection')
 			`${process.cwd()}/collection/${fileName}`,
 			'utf-8'
 		);
+		words.push(fileContent.split(' '));
 		// eslint-disable-next-line prefer-const
 		let fileTermsArr: string[] = [];
 		// tokenization and stemming
@@ -25,17 +28,22 @@ fs.readdirSync('./collection')
 	});
 
 fileTerms.shift();
+words.shift();
 // console.log(fileTerms);
 
 // create query and search it
-const query = 'angels fools in rush';
-const normalizedQuery = Tokenization(query.toLowerCase()).map((token) => {
-	return Stemming(token);
-});
+// const query = 'antony brutus';
+// const normalizedQuery = Tokenization(query.toLowerCase()).map((token) => {
+// 	return Stemming(token);
+// });
 
-console.log(searchPhrase(createPositionalIndex(fileTerms), normalizedQuery));
+// console.log(searchPhrase(createPositionalIndex(fileTerms), normalizedQuery));
 
 // test a query with tokenization and stemming
+
+// *** test term frequency ***
+const termFrequency = TermFrequency(words);
+console.table(termFrequency);
 
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
