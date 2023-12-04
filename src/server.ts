@@ -1,9 +1,10 @@
+import colors from 'colors';
 import fs from 'fs';
 import { app } from './app';
-import createPositionalIndex from './utils/newPositionalIndex';
+import createPositionalIndex from './utils/positionalIndex';
 import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
-import TermFrequency from './utils/termRrequency';
+import TermFrequency from './utils/termFrequency';
 import Tokenization from './utils/tokenization';
 
 // eslint-disable-next-line prefer-const
@@ -43,6 +44,12 @@ words.shift();
 
 // *** test term frequency ***
 const termFrequency = TermFrequency(words);
+console.log(
+	colors.cyan(
+		'============================================================ Term Frequency ============================================================'
+	)
+);
+
 console.table(termFrequency);
 
 app.listen(3001, () => {
