@@ -1,4 +1,4 @@
-import { PositionalIndex } from './newPositionalIndex';
+import { PositionalIndex } from './positionalIndex';
 
 const searchPhrase = (index: PositionalIndex, terms: string[]): string[] => {
 	const phraseDocs: string[] = [];

@@ -1,6 +1,6 @@
 interface ITermFrequency {
-	term: string;
-	[docId: string]: number | string;
+	term: string | any;
+	[docId: string]: number;
 }
 
 const TermFrequency = (props: string[][]) => {
@@ -13,12 +13,16 @@ const TermFrequency = (props: string[][]) => {
 				const index = termFrequency.findIndex(
 					(term) => term.term === props[i][j]
 				);
-				termFrequency[index][`d${i + 1}`] = 1;
+				if (!termFrequency[index][`d${i + 1}`]) {
+					termFrequency[index][`d${i + 1}`] = 1;
+				} else {
+					termFrequency[index][`d${i + 1}`]++;
+				}
 			} else {
-				const term: ITermFrequency = {
+				const term = {
 					term: props[i][j],
 					[`d${i + 1}`]: 1,
-				};
+				} as ITermFrequency;
 				termFrequency.push(term);
 			}
 		}
@@ -30,7 +34,6 @@ const TermFrequency = (props: string[][]) => {
 			}
 		}
 	});
-
 	return termFrequency;
 };
 
