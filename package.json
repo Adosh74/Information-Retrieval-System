@@ -15,6 +15,7 @@
 	"author": "Mohamed Shebl",
 	"license": "ISC",
 	"dependencies": {
+		"colors": "^1.4.0",
 		"express": "^4.18.2",
 		"natural": "^6.8.0",
 		"stopword": "^2.0.8"
