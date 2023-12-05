@@ -6,6 +6,7 @@ import createPositionalIndex from './utils/positionalIndex';
 import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
 import TermFrequency from './utils/termFrequency';
+import TfIdf from './utils/tfIdf';
 import TfWeight from './utils/tfWeight';
 import Tokenization from './utils/tokenization';
 
@@ -76,6 +77,16 @@ console.log(
 );
 const dfAndIdf = DfAndIdf(termFrequency, words.length);
 console.table(dfAndIdf);
+
+// *** test Tf-Idf *** //
+console.log(
+	colors.bold.bgYellow(
+		'============================================================ TF-IDF ============================================================'
+	)
+);
+
+const tfIdf = TfIdf(termFrequency, dfAndIdf);
+console.table(tfIdf);
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
 });
