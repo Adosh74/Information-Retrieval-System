@@ -1,10 +1,12 @@
 import colors from 'colors';
 import fs from 'fs';
 import { app } from './app';
+import DfAndIdf from './utils/dfAndIdf';
 import createPositionalIndex from './utils/positionalIndex';
 import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
 import TermFrequency from './utils/termFrequency';
+import TfWeight from './utils/tfWeight';
 import Tokenization from './utils/tokenization';
 
 // eslint-disable-next-line prefer-const
@@ -44,14 +46,36 @@ words.shift();
 
 // *** test term frequency ***
 const termFrequency = TermFrequency(words);
+// const transformedTermFrequency = termFrequency.reduce((acc, { term, ...x }) => {
+// 	acc[term] = x;
+// 	return acc;
+// }, {});
 console.log(
-	colors.cyan(
-		'============================================================ Term Frequency ============================================================'
+	colors.bold.bgCyan(
+		'============================================================ Term Frequency(TF) ============================================================'
 	)
 );
 
 console.table(termFrequency);
 
+// *** test tfWeight ***
+const tfWeight = TfWeight(termFrequency);
+
+console.log(
+	colors.bold.bgMagenta(
+		'============================================================ weight tf(1+ log tf) ============================================================'
+	)
+);
+console.table(tfWeight);
+
+// *** test df-idf ***
+console.log(
+	colors.bold.bgGreen(
+		'============================================================ DF And IDF ============================================================'
+	)
+);
+const dfAndIdf = DfAndIdf(termFrequency, words.length);
+console.table(dfAndIdf);
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
 });
