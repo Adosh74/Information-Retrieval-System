@@ -1,7 +1,7 @@
 /* eslint-disable for-direction */
 import { ITermFrequency } from './termFrequency';
 
-interface IDfAndIdf {
+export interface IDfAndIdf {
 	term: string;
 	df: number;
 	idf: number;
@@ -26,15 +26,15 @@ const DfAndIdf = (props: ITermFrequency[], N: number): IDfAndIdf[] => {
 	}
 
 	// sort by alphabet
-	for (let i = 0; i < dfAndIdf.length - 1; i++) {
-		for (let j = i + 1; j < dfAndIdf.length; j++) {
-			if (dfAndIdf[i].term > dfAndIdf[j].term) {
-				const temp = dfAndIdf[i];
-				dfAndIdf[i] = dfAndIdf[j];
-				dfAndIdf[j] = temp;
-			}
-		}
-	}
+	// for (let i = 0; i < dfAndIdf.length - 1; i++) {
+	// 	for (let j = i + 1; j < dfAndIdf.length; j++) {
+	// 		if (dfAndIdf[i].term > dfAndIdf[j].term) {
+	// 			const temp = dfAndIdf[i];
+	// 			dfAndIdf[i] = dfAndIdf[j];
+	// 			dfAndIdf[j] = temp;
+	// 		}
+	// 	}
+	// }
 
 	return dfAndIdf;
 };

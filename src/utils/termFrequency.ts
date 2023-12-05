@@ -37,15 +37,15 @@ const TermFrequency = (props: string[][]) => {
 	});
 
 	// sort by alphabet and docId
-	for (let i = 0; i < termFrequency.length - 1; i++) {
-		for (let j = i + 1; j < termFrequency.length; j++) {
-			if (termFrequency[i].term > termFrequency[j].term) {
-				const temp = termFrequency[i];
-				termFrequency[i] = termFrequency[j];
-				termFrequency[j] = temp;
-			}
-		}
-	}
+	// for (let i = 0; i < termFrequency.length - 1; i++) {
+	// 	for (let j = i + 1; j < termFrequency.length; j++) {
+	// 		if (termFrequency[i].term > termFrequency[j].term) {
+	// 			const temp = termFrequency[i];
+	// 			termFrequency[i] = termFrequency[j];
+	// 			termFrequency[j] = temp;
+	// 		}
+	// 	}
+	// }
 
 	return termFrequency;
 };

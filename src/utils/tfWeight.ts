@@ -20,15 +20,15 @@ const TfWeight = (props: ITermFrequency[]): ITermFrequency[] => {
 	}
 
 	// sort by alphabet
-	for (let i = 0; i < tfWeight.length - 1; i++) {
-		for (let j = i + 1; j < tfWeight.length; j++) {
-			if (tfWeight[i].term > tfWeight[j].term) {
-				const temp = tfWeight[i];
-				tfWeight[i] = tfWeight[j];
-				tfWeight[j] = temp;
-			}
-		}
-	}
+	// for (let i = 0; i < tfWeight.length - 1; i++) {
+	// 	for (let j = i + 1; j < tfWeight.length; j++) {
+	// 		if (tfWeight[i].term > tfWeight[j].term) {
+	// 			const temp = tfWeight[i];
+	// 			tfWeight[i] = tfWeight[j];
+	// 			tfWeight[j] = temp;
+	// 		}
+	// 	}
+	// }
 	return tfWeight;
 };
 
