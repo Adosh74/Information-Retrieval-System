@@ -21,9 +21,9 @@ This is a simple information retrieval system that can be used to search for doc
 
 3. **Phrase query** search should be supported using the positional index. [✅]
 
-4. **Term frequency** and inverse document frequency should be used to rank the documents in the corpus. [wip]
+4. **Term frequency** and inverse document frequency should be used to rank the documents in the corpus. [✅]
 
-5. **Idf** smoothing should be used to rank the documents. [wip]
+5. **Idf** smoothing should be used to rank the documents. [✅]
 
 6. **TF.idf** matrix should be normalized using the cosine normalization technique. [wip]
 
