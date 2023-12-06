@@ -1,6 +1,6 @@
 import { ITermFrequency } from './termFrequency';
 
-interface IDocumentLength {
+export interface IDocumentLength {
 	docName: string;
 	docLength: number;
 }
