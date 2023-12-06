@@ -3,6 +3,7 @@ import fs from 'fs';
 import { app } from './app';
 import DfAndIdf from './utils/dfAndIdf';
 import DocumentLength from './utils/documentLength';
+import NormalizedTfIdf from './utils/normalizedTfIdf';
 import createPositionalIndex from './utils/positionalIndex';
 import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
@@ -95,7 +96,17 @@ console.log(
 		'============================================================ Document Length ============================================================'
 	)
 );
-console.table(DocumentLength(tfIdf, words.length));
+
+const documentLength = DocumentLength(tfIdf, words.length);
+console.table(documentLength);
+
+// *** test normalized tf-idf *** //
+console.log(
+	colors.bold.bgBlue(
+		'============================================================ Normalized TF-IDF ============================================================'
+	)
+);
+console.table(NormalizedTfIdf(tfIdf, documentLength));
 
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
