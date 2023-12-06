@@ -2,6 +2,7 @@ import colors from 'colors';
 import fs from 'fs';
 import { app } from './app';
 import DfAndIdf from './utils/dfAndIdf';
+import DocumentLength from './utils/documentLength';
 import createPositionalIndex from './utils/positionalIndex';
 import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
@@ -87,6 +88,15 @@ console.log(
 
 const tfIdf = TfIdf(termFrequency, dfAndIdf);
 console.table(tfIdf);
+
+// *** test document length *** //
+console.log(
+	colors.bold.bgRed(
+		'============================================================ Document Length ============================================================'
+	)
+);
+console.table(DocumentLength(tfIdf, words.length));
+
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
 });
