@@ -370,6 +370,13 @@
     "@types/mime" "*"
     "@types/node" "*"
 
+"@types/stemmer@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/stemmer/-/stemmer-2.0.0.tgz#91b3a960d0cbbea32058b3705ab2a5cb5595662d"
+  integrity sha512-OSRg3/3FaSOvE0OqWgLlUtBLygqbqjb5ByRF7osVsD1taVsTIwoDD1pkadBDTS3c3FShzveKVoGEDzO0j63Hfw==
+  dependencies:
+    stemmer "*"
+
 "@types/stopword@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/stopword/-/stopword-2.0.3.tgz#4e7c629000a74eb56f772fa0f4eb77775de425de"
@@ -1762,6 +1769,11 @@ statuses@2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/statuses/-/statuses-2.0.1.tgz"
   integrity sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==
+
+stemmer@*, stemmer@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/stemmer/-/stemmer-2.0.1.tgz#1012cf0e5070d0279526f206f379d824accadca5"
+  integrity sha512-bkWvSX2JR4nSZFfs113kd4C6X13bBBrg4fBKv2pVdzpdQI2LA5pZcWzTFNdkYsiUNl13E4EzymSRjZ0D55jBYg==
 
 stopword@^2.0.8:
   version "2.0.8"
