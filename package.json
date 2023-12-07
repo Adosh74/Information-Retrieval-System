@@ -1,5 +1,5 @@
 {
-	"name": "Node-Env",
+	"name": "information-retrieval-system",
 	"version": "1.0.0",
 	"description": "students grades",
 	"main": "server.ts",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Adosh74/Node-Env"
+		"url": "https://github.com/Adosh74/Information-Retrival-System"
 	},
 	"author": "Mohamed Shebl",
 	"license": "ISC",
