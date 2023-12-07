@@ -47,6 +47,16 @@ words.shift();
 
 // test a query with tokenization and stemming
 
+// *** test positional index *** //
+const positionalIndex = createPositionalIndex(fileTerms);
+console.log(
+	colors.bold.bgBlue(
+		'============================================================ Positional Index ============================================================'
+	)
+);
+
+console.log(positionalIndex);
+
 // *** test term frequency ***
 const termFrequency = TermFrequency(words);
 // const transformedTermFrequency = termFrequency.reduce((acc, { term, ...x }) => {
@@ -66,7 +76,7 @@ const tfWeight = TfWeight(termFrequency);
 
 console.log(
 	colors.bold.bgMagenta(
-		'============================================================ weight tf(1+ log tf) ============================================================'
+		'============================================================ weight TF = (1+ log tf) ============================================================'
 	)
 );
 console.table(tfWeight);
@@ -74,7 +84,7 @@ console.table(tfWeight);
 // *** test df-idf ***
 console.log(
 	colors.bold.bgGreen(
-		'============================================================ DF And IDF ============================================================'
+		'============================================================ DF And IDF(log10(N / DF) ============================================================'
 	)
 );
 const dfAndIdf = DfAndIdf(termFrequency, words.length);
@@ -83,11 +93,11 @@ console.table(dfAndIdf);
 // *** test Tf-Idf *** //
 console.log(
 	colors.bold.bgYellow(
-		'============================================================ TF-IDF ============================================================'
+		'============================================================ TF-IDF = TF weight * IDF   ============================================================'
 	)
 );
 
-const tfIdf = TfIdf(termFrequency, dfAndIdf);
+const tfIdf = TfIdf(tfWeight, dfAndIdf);
 console.table(tfIdf);
 
 // *** test document length *** //
@@ -103,7 +113,7 @@ console.table(documentLength);
 // *** test normalized tf-idf *** //
 console.log(
 	colors.bold.bgBlue(
-		'============================================================ Normalized TF-IDF ============================================================'
+		'============================================================ Normalized TF-IDF = TF-IDF / Document length ============================================================'
 	)
 );
 console.table(NormalizedTfIdf(tfIdf, documentLength));
