@@ -1,7 +1,7 @@
 import { removeStopwords } from 'stopword';
 
 const Tokenization = (token: string) => {
-	const tokenized = removeStopwords(token.split(' '));
+	const tokenized = token.trim().toLowerCase().split(' ');
 	return tokenized;
 };
 
