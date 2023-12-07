@@ -2,7 +2,7 @@ export type PositionalIndex = {
 	[term: string]: {
 		docCount: number;
 		positions: {
-			[docId: string]: number[]; // Change here
+			[docId: string]: number[];
 		};
 	};
 };
@@ -26,16 +26,17 @@ const createPositionalIndex = (documents: string[][]): PositionalIndex => {
 				};
 			}
 
+			// access data in positionalIndex[term]
 			const termInfo = positionalIndex[term];
 
 			// If the document doesn't exist in the term's positions, initialize it
-			if (!(docId.toString() in termInfo.positions)) {
-				termInfo.positions[docId.toString()] = [];
+			if (!(`d${docId + 1}` in termInfo.positions)) {
+				termInfo.positions[`d${docId + 1}`] = [];
 				termInfo.docCount++;
 			}
 
 			// Add the position of the term in the document
-			termInfo.positions[docId.toString()].push(position);
+			termInfo.positions[`d${docId + 1}`].push(position);
 		}
 	}
 
