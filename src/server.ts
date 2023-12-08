@@ -48,7 +48,7 @@ words.shift();
 // test a query with tokenization and stemming
 
 // *** test positional index *** //
-const positionalIndex = createPositionalIndex(fileTerms);
+export const positionalIndex = createPositionalIndex(fileTerms);
 console.log(
 	colors.bold.bgBlue(
 		'============================================================ Positional Index ============================================================'
