@@ -10,24 +10,26 @@ This is a simple information retrieval system that can be used to search for doc
 
 ## PRD: Information Retrieval System
 
-1. Tokenization should be done using the following rules:
+1. ✅ Tokenization should be done using the following rules:
 
-    - Splitting on whitespace. [✅]
-    - Removing punctuation. [✅]
-    - Removing stop words. [✅]
-    - Stemming using the Porter Stemmer algorithm. [✅]
+    - ✅ Splitting on whitespace.
+    - ✅ Removing punctuation.
+    - ✅ Removing stop words.
+    - ✅ Stemming using the Porter Stemmer algorithm.
 
-2. **Constructing Auxiliary structure(s) (Positional index)** to speed up the search process should be done. [✅]
+2. ✅ **Constructing Auxiliary structure(s) (Positional index)** to speed up the search process should be done.
 
-3. **Phrase query** search should be supported using the positional index. [✅]
+3. ✅ **Phrase query** search should be supported using the positional index.
 
-4. **Term frequency** and inverse document frequency should be used to rank the documents in the corpus. [✅]
+4. ✅ **Term frequency** and inverse document frequency should be used to rank the documents in the corpus.
 
-5. **Idf** smoothing should be used to rank the documents. [✅]
+5. ✅ **Idf** smoothing should be used to rank the documents.
 
-6. **TF.idf** matrix should be normalized using the cosine normalization technique. [wip]
+6. ✅ **TF.idf** matrix should be normalized using the cosine normalization technique.
 
-7. **Similarity between query and each document** should be computed using the cosine similarity measure. [wip]
+7. ✅ **Similarity between query and each document** should be computed using the cosine similarity measure.
+
+8. ✅ **Boolean query** search should be supported using the positional index.
 
 ## Technologies and Tools
 
