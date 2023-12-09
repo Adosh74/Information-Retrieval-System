@@ -2,6 +2,9 @@
 
 -   [Introduction](#introduction)
 -   [PRD: Information Retrieval System](#prd-information-retrieval-system)
+-   [API Documentation](#api-documentation)
+    -   [Search](#search)
+-   [How to run and Install](#how-to-run-and-install)
 -   [Technologies and Tools](#technologies-and-tools)
 
 ## Introduction
@@ -30,6 +33,41 @@ This is a simple information retrieval system that can be used to search for doc
 7. ✅ **Similarity between query and each document** should be computed using the cosine similarity measure.
 
 8. ✅ **Boolean query** search should be supported using the positional index.
+
+## API Documentation
+
+### Search
+
+```http
+`GET` /search
+
+body: {
+    query: string
+}
+```
+
+## How to run and Install
+
+```bash
+# Clone the repo
+git clone https://github.com/Adosh74/Information-Retrieval-System
+
+# Install dependencies
+yarn install
+or
+npm install
+
+# Run the server
+yarn start
+
+# Run the server in development mode
+yarn start:dev
+
+```
+
+-   After running the server, you can access the API through the following URL: `http://localhost:3001`
+
+-   And display all PRD tables in console
 
 ## Technologies and Tools
 
