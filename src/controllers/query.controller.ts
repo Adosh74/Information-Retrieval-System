@@ -67,6 +67,40 @@ export const phraseQuery = (req: Request, res: Response) => {
 			temp.join(' ').split(',').join(' ').split(' '),
 			resultTemp
 		);
+	} else if (query.includes(' not ')) {
+		const phrasesQueries = query.split(' not ');
+
+		const temp: string[][] = [[]];
+		console.log(phrasesQueries);
+
+		let anotherTemp;
+		for (let i = 0; i < phrasesQueries.length; i++) {
+			anotherTemp = Tokenization(phrasesQueries[i]).map((term) => {
+				return Stemming(term);
+			});
+			temp.push(anotherTemp);
+		}
+		temp.shift();
+		console.log(temp);
+
+		const resultTemp: string[][] = [[]];
+		for (let i = 0; i < temp.length; i++) {
+			resultTemp.push(searchPhrase(positionalIndex, temp[i]));
+		}
+		resultTemp.shift();
+
+		// keep only the first array and if second array contain element in the first array, remove it from the first array
+		for (let i = 0; i < resultTemp[0].length; i++) {
+			for (let j = 0; j < resultTemp[1].length; j++) {
+				if (resultTemp[0][i] === resultTemp[1][j]) {
+					resultTemp[0].splice(i, 1);
+				}
+			}
+		}
+
+		console.log(resultTemp);
+
+		result = SimilarityQuery(temp[0], resultTemp[0]);
 	} else {
 		const normalizedQuery: string[] = Tokenization(query).map((term) => {
 			return Stemming(term);
