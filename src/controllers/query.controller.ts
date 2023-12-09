@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { positionalIndex } from '../server';
+import SimilarityQuery from '../utils/query.util';
 import searchPhrase from '../utils/searchPhrase';
 import Stemming from '../utils/stemming';
 import Tokenization from '../utils/tokenization';
@@ -8,16 +9,9 @@ export const phraseQuery = (req: Request, res: Response) => {
 	let query: string = req.body.query;
 	query = query.trim().toLowerCase();
 
-	// check if contain and operator
-	const containOperator = query.indexOf('and');
 	let result: string[] = [];
 
-	if (containOperator === -1) {
-		const normalizedQuery: string[] = Tokenization(query).map((term) => {
-			return Stemming(term);
-		});
-		result = searchPhrase(positionalIndex, normalizedQuery);
-	} else {
+	if (query.includes(' and ')) {
 		const phrasesQueries = query.split('and');
 		const temp: string[][] = [[]];
 		let anotherTemp;
@@ -41,6 +35,46 @@ export const phraseQuery = (req: Request, res: Response) => {
 				}
 			}
 		}
+		result = SimilarityQuery(temp.join(' ').split(',').join(' ').split(' '), result);
+		// console.log(temp.join(' ').split(',').join(' ').split(' '));
+	}
+	// check if contain or operator
+	else if (query.includes(' or ')) {
+		const phrasesQueries = query.split(' or ');
+
+		const temp: string[][] = [[]];
+		console.log(phrasesQueries);
+
+		let anotherTemp;
+		for (let i = 0; i < phrasesQueries.length; i++) {
+			anotherTemp = Tokenization(phrasesQueries[i]).map((term) => {
+				return Stemming(term);
+			});
+			temp.push(anotherTemp);
+		}
+		temp.shift();
+		console.log(temp);
+
+		let resultTemp: string[] = [];
+		for (let i = 0; i < temp.length; i++) {
+			resultTemp.push(...searchPhrase(positionalIndex, temp[i]));
+		}
+
+		// remove duplicate in array
+		resultTemp = [...new Set(resultTemp)];
+
+		result = SimilarityQuery(
+			temp.join(' ').split(',').join(' ').split(' '),
+			resultTemp
+		);
+	} else {
+		const normalizedQuery: string[] = Tokenization(query).map((term) => {
+			return Stemming(term);
+		});
+
+		result = searchPhrase(positionalIndex, normalizedQuery);
+
+		result = SimilarityQuery(normalizedQuery, result);
 	}
 
 	// check if no result found
