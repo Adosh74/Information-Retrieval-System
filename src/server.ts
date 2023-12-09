@@ -33,6 +33,7 @@ fs.readdirSync('./collection')
 		fileTerms.push(fileTermsArr);
 	});
 
+export const allTerms = fileTerms.join(' ').trim().split(',');
 fileTerms.shift();
 words.shift();
 // console.log(fileTerms);
@@ -58,7 +59,7 @@ console.log(
 console.log(positionalIndex);
 
 // *** test term frequency ***
-const termFrequency = TermFrequency(words);
+export const termFrequency = TermFrequency(fileTerms);
 // const transformedTermFrequency = termFrequency.reduce((acc, { term, ...x }) => {
 // 	acc[term] = x;
 // 	return acc;
@@ -87,7 +88,7 @@ console.log(
 		'============================================================ DF And IDF(log10(N / DF) ============================================================'
 	)
 );
-const dfAndIdf = DfAndIdf(termFrequency, words.length);
+const dfAndIdf = DfAndIdf(termFrequency, fileTerms.length);
 console.table(dfAndIdf);
 
 // *** test Tf-Idf *** //
@@ -103,11 +104,11 @@ console.table(tfIdf);
 // *** test document length *** //
 console.log(
 	colors.bold.bgRed(
-		'============================================================ Document Length ============================================================'
+		'============================================================ Document Length sqr(sum(tf.idf ** 2))============================================================'
 	)
 );
 
-const documentLength = DocumentLength(tfIdf, words.length);
+const documentLength = DocumentLength(tfIdf, fileTerms.length);
 console.table(documentLength);
 
 // *** test normalized tf-idf *** //
@@ -116,7 +117,14 @@ console.log(
 		'============================================================ Normalized TF-IDF = TF-IDF / Document length ============================================================'
 	)
 );
-console.table(NormalizedTfIdf(tfIdf, documentLength));
+export const normalizedTfIdf = NormalizedTfIdf(tfIdf, documentLength);
+console.table(normalizedTfIdf);
+// console.log(normalizedTfIdf);
+normalizedTfIdf.forEach((row) => {
+	if (row.term === 'antoni') {
+		console.log(row.d1);
+	}
+});
 
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
