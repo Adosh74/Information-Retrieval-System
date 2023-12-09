@@ -71,7 +71,7 @@ const SimilarityQuery = (query: string[], documents: string[]) => {
 	result.sort((a, b) => {
 		return +b.split(':')[1] - +a.split(':')[1];
 	});
-	console.table(result);
+	console.log(result);
 
 	const finalResult = result.map((doc) => {
 		return doc.split(':')[0];
