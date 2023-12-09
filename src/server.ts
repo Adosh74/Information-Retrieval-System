@@ -5,7 +5,6 @@ import DfAndIdf from './utils/dfAndIdf';
 import DocumentLength from './utils/documentLength';
 import NormalizedTfIdf from './utils/normalizedTfIdf';
 import createPositionalIndex from './utils/positionalIndex';
-import searchPhrase from './utils/searchPhrase';
 import Stemming from './utils/stemming';
 import TermFrequency from './utils/termFrequency';
 import TfIdf from './utils/tfIdf';
@@ -13,7 +12,6 @@ import TfWeight from './utils/tfWeight';
 import Tokenization from './utils/tokenization';
 
 // eslint-disable-next-line prefer-const
-const words: string[][] = [[]];
 const fileTerms: string[][] = [[]];
 // read collection
 fs.readdirSync('./collection')
@@ -23,7 +21,6 @@ fs.readdirSync('./collection')
 			`${process.cwd()}/collection/${fileName}`,
 			'utf-8'
 		);
-		words.push(fileContent.split(' '));
 		// eslint-disable-next-line prefer-const
 		let fileTermsArr: string[] = [];
 		// tokenization and stemming
@@ -35,7 +32,6 @@ fs.readdirSync('./collection')
 
 export const allTerms = fileTerms.join(' ').trim().split(',');
 fileTerms.shift();
-words.shift();
 // console.log(fileTerms);
 
 // create query and search it
@@ -120,11 +116,6 @@ console.log(
 export const normalizedTfIdf = NormalizedTfIdf(tfIdf, documentLength);
 console.table(normalizedTfIdf);
 // console.log(normalizedTfIdf);
-normalizedTfIdf.forEach((row) => {
-	if (row.term === 'antoni') {
-		console.log(row.d1);
-	}
-});
 
 app.listen(3001, () => {
 	console.log('Server started on port 3001');
