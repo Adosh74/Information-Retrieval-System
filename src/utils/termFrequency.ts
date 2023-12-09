@@ -9,6 +9,7 @@ const TermFrequency = (props: string[][]) => {
 	// Iterate over the documents
 	for (let i = 0; i < props.length; i++) {
 		for (let j = 0; j < props[i].length; j++) {
+			// Iterate  over the terms in the document and check if the term is already in the termFrequency
 			if (termFrequency.some((term) => term.term === props[i][j])) {
 				const index = termFrequency.findIndex(
 					(term) => term.term === props[i][j]
