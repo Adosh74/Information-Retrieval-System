@@ -46,7 +46,7 @@ const SimilarityQuery = (query: string[], documents: string[]) => {
 		similarityTable.push(newSimilarityQuery);
 	}
 
-	// define normalized_tf_idf
+	// define normalized_tf_idf and document similarity
 	similarityTable.forEach((row) => {
 		row.normalized_tf_idf = row.tf_idf / Math.sqrt(sumIdf);
 		for (let j = 0; j < documents.length; j++) {
